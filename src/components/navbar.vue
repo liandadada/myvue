@@ -1,9 +1,9 @@
 <template>
   <div id="navlist">
     <ul class="clearfix">
-      <li><a href="##">商品</a></li>
-      <li><a href="##">评论</a></li>
-      <li><a href="##">店家</a></li>
+      <li><router-link to="/">商品</router-link></li>
+      <li><router-link to="/comments">评论</router-link></li>
+      <li><router-link to="/store">店家</router-link></li>
     </ul>
   </div>
 </template>

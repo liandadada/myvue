@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <div id="comment">
+    <div id="comment"  v-bind:style="{height : commentH , overflow : 'hidden'}">
+      <div class="comment-list">
       <div class="conclusion clearfix">
         <div class="box-left">
           <p>4.2</p>
@@ -19,45 +19,68 @@
       </div>
       <div class="conclusion-btn">
         <div class="btn">
-          <button>全部<span class="count">24</span></button>
-          <button>满意<span class="count">15</span></button>
-          <button>不满意<span class="count">6</span></button>
+          <button @click="numChiose('2')">全部<span class="count">24</span></button>
+          <button @click="numChiose('1')">满意<span class="count">15</span></button>
+          <button @click="numChiose('0')">不满意<span class="count">6</span></button>
         </div>
         <div class="flitrate">
           <i class="iconfont icon-check-circle-fill" :class="{active: isActive}" @click="filt"></i> 只看有内容的评价
         </div>
         <div class="evaluation">
           <ul>
-            <li v-for="(ev, index) in evaluation" v-bind:key="index">
-              <p>{{ev.phone | ellipsis}}</p>
+            <li v-for="(item, index) in evaluated" v-bind:key="index">
+              <div class="yonghu"><i class="iconfont icon-yonghu" ></i></div>
+              <div class="description">
+              <p>{{item.phone | ellipsis}}</p>
+              <p class="timer">{{item.time}}</p>
               <p><template v-for="i in 5"><i class="iconfont icon-shoucang" v-bind:key="i"></i>&nbsp;</template></p>
-              <p>{{ev.evaluat}}</p>
+              <p>{{item.evaluat}}</p>
+              </div>
             </li>
           </ul>
         </div>
       </div>
     </div>
-  </div>
+    </div>
 </template>
 
 <script>
+import BScroll from 'better-scroll'
 import mockdata from '../mock'
 export default {
   data () {
     return {
+      commentH: document.documentElement.clientHeight - (134 + 48 + 40) + 'px',
+      commentList: '',
       isActive: false,
-      evaluation: []
+      evaluation: [],
+      evaluated: []
     }
   },
   methods: {
     filt: function () {
       this.isActive = !this.isActive
+    },
+    numChiose: function(num) {
+      this.evaluated = []
+      if (num == '2') {
+        this.evaluated = this.evaluation;
+        return
+      }
+      this.evaluation.forEach((item, index) => {
+        if(item.satisfied == num) {
+          this.evaluated.push(item);
+        }
+      });
     }
   },
   mounted: function () {
+    var wrapper = new BScroll('#comment')
+    this.commentList = document.getElementsByClassName('comment-list')[0].clientHeight + 'px'
+
     this.$axios.get('/api/data').then(res => {
       this.evaluation = res.data.evaluation
-      console.log(res.data)
+      this.evaluated = this.evaluation;
     })
   },
   filters: {
@@ -124,6 +147,7 @@ export default {
 
   #comment div .time {
     color: #93999f;
+    padding-left: 12px;
   }
 
   #comment .icon-shoucang {
@@ -184,6 +208,46 @@ export default {
 
   #comment .active {
     color: #00c850;
+  }
+
+   #comment .evaluation ul {
+     padding-left: 0;
+   }
+
+  #comment .evaluation ul li {
+    list-style-type: none;
+    font-size: 12px;
+    display: flex;
+    display: -webkit-flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 18px 0;
+    border-bottom: 1px solid #ccc;
+    position: relative;
+    display: flex;
+    display: -webkit-flex;
+    align-items: flex-start;
+  }
+
+  #comment .yonghu i {
+    font-size: 26px;
+  }
+
+  #comment .evaluation .icon-shoucang {
+    font-size: 10px;
+  }
+
+  #comment .description {
+    float: left;
+    padding-left: 12px;
+  }
+
+  #comment .timer {
+    color: #93999f;
+    position: absolute;
+    top: 18px;
+    right: 0;
+    margin-right: 0;
   }
 
   .clearfix:after {

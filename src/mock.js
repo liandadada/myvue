@@ -80,38 +80,73 @@ const data = Mock.mock('/api/data', (req, res) => {
       time: '2018-07-23 10:22',
       phone: '12222222222',
       string: '5',
-      evaluat: '良心店铺'
+      evaluat: '良心店铺',
+      satisfied: '1'
     }, {
       time: '2018-07-23 10:22',
       phone: '12222222222',
       string: '2',
-      evaluat: '送货速度慢'
+      evaluat: '送货速度慢',
+      satisfied: '0'
     }, {
       time: '2018-07-23 10:22',
       phone: '12222222222',
       string: '4',
-      evaluat: '量给得还可以'
+      evaluat: '量给得还可以',
+      satisfied: '1'
     }, {
       time: '2018-07-23 10:22',
       phone: '12222222222',
       string: '4',
-      evaluat: '服务态度不错'
+      evaluat: '服务态度不错',
+      satisfied: '1'
     }, {
       time: '2018-07-23 10:22',
       phone: '12222222222',
       string: '5',
-      evaluat: '吃了还想再吃'
+      evaluat: '吃了还想再吃',
+      satisfied: '1'
     }, {
       time: '2018-07-23 10:22',
       phone: '12222222222',
       string: '5',
-      evaluat: '好吃'
+      evaluat: '好吃',
+      satisfied: '1'
     }, {
       time: '2018-07-23 10:22',
       phone: '12222222222',
       string: '4',
-      evaluat: '还行'
-    }]
+      evaluat: '还行',
+      satisfied: '1'
+    }, {
+      time: '2018-07-23 10:22',
+      phone: '12222222222',
+      string: '4',
+      evaluat: '不太行',
+      satisfied: '0'
+    }],
+    storeList:[{
+      img: '/static/store/jian.png',
+      desc: '在线支付满28减5'
+    },{
+      img: '/static/store/zhe.png',
+      desc: 'VC无限橙果汁全场8折'
+    },{
+      img: '/static/store/te.png',
+      desc: '单人精彩套餐'
+    },{
+      img: '/static/store/piao.png',
+      desc: '该商家支持发票，请下单写好发票抬头'
+    },{
+      img: '/static/store/bao.png',
+      desc: '已加入"外卖保"计划，食品安全保障'
+    }],
+    liveList: [
+      '/static/store/live1.jpeg', '/static/store/live2.jpeg', '/static/store/live3.jpeg', '/static/store/live4.jpeg',
+    ],
+    storeInformation: [
+      '该商家支持发票,请下单写好发票抬头', '品类:其他菜系,包子粥店', '北京市昌平区回龙观西大街龙观置业大厦底商B座102单元1340', '营业时间:10:00-20:30'
+    ]
   }
 })
 

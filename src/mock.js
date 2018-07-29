@@ -111,7 +111,26 @@ const data = Mock.mock('/api/data', (req, res) => {
       phone: '12222222222',
       string: '4',
       evaluat: '还行'
-    }]
+    }],
+    storeList:[{
+      img: '/static/store/jian.png',
+      desc: '在线支付满28减5'
+    },{
+      img: '/static/store/zhe.png',
+      desc: 'VC无限橙果汁全场8折'
+    },{
+      img: '/static/store/te.png',
+      desc: '单人精彩套餐'
+    },{
+      img: '/static/store/piao.png',
+      desc: '该商家支持发票，请下单写好发票抬头'
+    },{
+      img: '/static/store/bao.png',
+      desc: '已加入"外卖保"计划，食品安全保障'
+    }],
+    liveList: [
+      '/static/store/live1.jpeg', '/static/store/live2.jpeg', '/static/store/live3.jpeg', '/static/store/live4.jpeg',
+    ]
   }
 })
 

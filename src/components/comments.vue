@@ -62,6 +62,7 @@ export default {
       this.isActive = !this.isActive
     },
     numChiose: function(num) {
+      
       this.evaluated = []
       if (num == '2') {
         this.evaluated = this.evaluation;

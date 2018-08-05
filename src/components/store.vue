@@ -89,7 +89,6 @@ export default {
         observer: true,  //修改swiper自己或子元素时，自动初始化swiper
         observeParents: true  //修改swiper的父元素时，自动初始化swiper
       })
-
     this.$axios.get('/api/data').then(res => {
       this.storeDesc = res.data.storeList
     })
@@ -109,7 +108,6 @@ export default {
     }
   }
 }
-
 </script>
 
 <style>

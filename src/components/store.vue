@@ -290,4 +290,3 @@ export default {
   color: #f01414 !important;
 }
 </style>
-

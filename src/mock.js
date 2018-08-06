@@ -149,7 +149,6 @@ const data = Mock.mock('/api/data', (req, res) => {
     ]
   }
 })
-
 export default {
   data
 }

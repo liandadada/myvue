@@ -19,8 +19,8 @@
       </div>
       <div class="conclusion-btn">
         <div class="btn">
-          <button @click="numChiose('2')">全部<span class="count">24</span></button>
-          <button @click="numChiose('1')">满意<span class="count">15</span></button>
+          <button @click="numChiose('2')" ref="allBgcolor">全部<span class="count">24</span></button>
+          <button @click="numChiose('1')" ref="SatisfiedBgcolor">满意<span class="count">15</span></button>
           <button @click="numChiose('0')">不满意<span class="count">6</span></button>
         </div>
         <div class="flitrate">

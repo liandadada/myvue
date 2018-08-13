@@ -256,7 +256,11 @@ export default {
 #store .store-live ul li {
   list-style-type: none;
   float: left;
-  padding-right: 5px;
+  padding-left: 10px;
+}
+
+store .store-live ul li:first-child {
+  padding-left: 0;
 }
 
 #store .store-live ul li img {

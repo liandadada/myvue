@@ -3,6 +3,7 @@ import Mock from 'mockjs'
 const data = Mock.mock('/api/data', (req, res) => {
   return {
     menuGoods: [{
+      title: '热销榜',
       goodsImg: '/static/menu/img01.jpeg',
       goodsName: '皮蛋瘦肉粥',
       notic: '咸粥',
@@ -10,67 +11,106 @@ const data = Mock.mock('/api/data', (req, res) => {
       praise: '88%',
       price: '10'
     }, {
+      title: '热销榜',
       goodsImg: '/static/menu/img02.jpeg',
       goodsName: '扁豆闷面',
       sales: '188',
       praise: '96%',
       price: '10'
     }, {
+      title: '单人精彩套餐',
       goodsImg: '/static/menu/img03.jpeg',
       goodsName: '葱花饼',
       sales: '124',
       praise: '96%',
       price: '14'
     }, {
+      title: '单人精彩套餐',
       goodsImg: '/static/menu/img04.jpeg',
       goodsName: '牛肉馅饼',
       sales: '184',
       praise: '88%',
       price: '14'
     }, {
+      title: '单人精彩套餐',
       goodsImg: '/static/menu/img05.jpeg',
       goodsName: '皮蛋瘦肉粥',
       sales: '188',
       praise: '88%',
       price: '14'
     }, {
+      title: '冰爽饮品限时特惠',
       goodsImg: '/static/menu/img06.jpeg',
       goodsName: '皮蛋瘦肉粥',
       sales: '188',
       praise: '88%',
       price: '14'
     }, {
+      title: '精选热菜',
       goodsImg: '/static/menu/img07.jpeg',
       goodsName: '皮蛋瘦肉粥',
       sales: '188',
       praise: '88%',
       price: '14'
     }, {
+      title: '精选热菜',
       goodsImg: '/static/menu/img08.jpeg',
       goodsName: '皮蛋瘦肉粥',
       sales: '188',
       praise: '88%',
       price: '14'
     }, {
+      title: '精选热菜',
       goodsImg: '/static/menu/img09.jpeg',
       goodsName: '皮蛋瘦肉粥',
       sales: '188',
       praise: '88%',
       price: '14'
     }, {
+      title: '精选热菜',
       goodsImg: '/static/menu/img10.jpeg',
       goodsName: '皮蛋瘦肉粥',
       sales: '188',
       praise: '88%',
       price: '14'
     }, {
+      title: '爽口凉菜',
       goodsImg: '/static/menu/img11.jpeg',
       goodsName: '皮蛋瘦肉粥',
       sales: '188',
       praise: '88%',
       price: '14'
     }, {
+      title: '精选套餐',
       goodsImg: '/static/menu/img12.jpeg',
+      goodsName: '皮蛋瘦肉粥',
+      sales: '188',
+      praise: '88%',
+      price: '14'
+    }, {
+      title: '果拼果汁',
+      goodsImg: '/static/menu/img13.jpeg',
+      goodsName: '皮蛋瘦肉粥',
+      sales: '188',
+      praise: '88%',
+      price: '14'
+    }, {
+      title: '小吃主食',
+      goodsImg: '/static/menu/img14.jpeg',
+      goodsName: '皮蛋瘦肉粥',
+      sales: '188',
+      praise: '88%',
+      price: '14'
+    }, {
+      title: '特色粥品',
+      goodsImg: '/static/menu/img15.jpeg',
+      goodsName: '皮蛋瘦肉粥',
+      sales: '188',
+      praise: '88%',
+      price: '14'
+    }, {
+      title: '特色粥品',
+      goodsImg: '/static/menu/img16.jpeg',
       goodsName: '皮蛋瘦肉粥',
       sales: '188',
       praise: '88%',

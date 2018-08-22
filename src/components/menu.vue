@@ -1,15 +1,15 @@
 <template>
   <div>
   <div id="menu">
-    <div class="menu-list" v-bind:style="{height : menuH , overflow : 'hidden'}">
+    <div class="menu-list" v-bind:style="{height : menuH , overflow : 'hidden'}" ref="menuWrapper">
       <ul class="content-menu" v-bind:style="{height: contentMenuH}">
-        <li v-for="(i,index, key) in menuList" :key="key"><span>{{i}}</span></li>
+        <li v-for="(i,index) in menuList" :key="index" @touchstart="returnTop(i, index, $event)"><span>{{i}}</span></li>
       </ul>
     </div>
-    <div class="menu-goods" v-bind:style="{height : menuH , overflow : 'hidden'}">
-      <div class="content-goods" v-bind:style="{height: contentGoodsH}" >
-      <div v-for="(title, index, key) in menuTitle" :key="key">
-        <div class="separat">{{title}}</div>
+    <div class="menu-goods" v-bind:style="{height : menuH , overflow : 'hidden'}" @touchstart="runMenu($event)" ref="foodsWrapper">
+      <div class="content-goods" v-bind:style="{height: contentGoodsH}" ref="content">
+      <div class="block" v-for="(title, index) in menuTitle" :key="index">
+        <div class="separat" :id="title">{{title}}</div>
       <div class="goods clearfix" v-for="(goods, index) in menuGoods" :key="index" v-if="goods.title === title">
         <img v-bind:src="goods.goodsImg" alt="" width="57px" class="goodsImg"/>
         <div class="goods-dec">
@@ -19,14 +19,10 @@
           <p class="goods-price">￥ {{goods.price}}</p>
         </div>
         <div class="cartcontrol-wrapper">
-          <cartcontrol :food="menuGoods" @showFood="addFood1"></cartcontrol>
+          <cartcontrol :food="goods"></cartcontrol>
         </div>
-
-        <div class="cart-count" v-if="food.count>0">{{this.food.count}}</div>
-        <!-- <div><i class="iconfont icon-plus-circle-fill" @click.stop.prevent="addFood"></i></div> -->
       </div>
       </div>
-
       </div>
     </div>
   </div>
@@ -50,42 +46,42 @@ export default {
       menuGoods: [],
       menuTitle: [],
       footCount: '',
-      food: ''
+      food: '',
+      foodScroll: ''
     }
   },
   methods: {
-    addFood1(data) {
-      console.log('wode88888', data);
-        if (!event._constructed) {
-          return;
-        }
-        if (!this.food.count) {
-          Vue.set(this.food, 'count', 1);
-        } else {
-          this.food.count++;
-        }
-      }
+    initScroll () {
+      this.foodScroll = new BScroll('.menu-goods');
+      this.menuScroll = new BScroll('.menu-list');
+    },
+    runMenu: function (event) {
+    },
+    returnTop: function (id, index, event) {
+      let foodList = this.$refs.foodsWrapper.getElementsByClassName('block');
+      let el = foodList[index];
+      this.foodScroll.scrollToElement(el, 300);
+    }
   },
   mounted: function () {
-    var wrapMenu = new BScroll('.menu-list')
-    var wrapper = new BScroll('.menu-goods')
-    this.contentMenuH = document.getElementsByClassName('content-menu')[0].clientHeight + 'px'
-    this.contentMenuH = document.getElementsByClassName('content-goods')[0].clientHeight + 'px'
+    this.initScroll();
+    this.contentMenuH = document.getElementsByClassName('content-menu')[0].clientHeight + 'px';
+    this.contentMenuH = document.getElementsByClassName('content-goods')[0].clientHeight + 'px';
 
     this.$axios.get('/api/data').then(res => {
-      this.menuGoods = res.data.menuGoods
+      this.menuGoods = res.data.menuGoods;
 
       var array = [];
-      res.data.menuGoods.forEach(function(item, index, arr){    
+      res.data.menuGoods.forEach(function(item, index, arr){
         array.push(item.title)
-       })
+      })
 
       var result = [];
-      array.forEach(function(item, index, arr){ 
-          var bool = arr.indexOf(item,index+1); 
-          if(bool === -1){
+      array.forEach(function(item, index, arr){
+        var bool = arr.indexOf(item,index+1);
+        if (bool === -1) {
           result.push(item);
-          }
+        }
       })
       this.menuTitle = result;
     })
@@ -167,13 +163,15 @@ export default {
     border-bottom: 1px solid #ccc;
   }
 
-  #menu .iconfont {
-    font-size: 25px;
-    color: #00a0dc;
-    position: absolute;
-    bottom: 15px;
-    right: 12px;
-  }
+  /*#menu .iconfont {*/
+    /*font-size: 25px;*/
+    /*color: #00a0dc;*/
+    /*position: absolute;*/
+    /*bottom: 15px;*/
+    /*right: 12px;*/
+    /*display: flex;*/
+    /*display: -webkit-flex;*/
+  /*}*/
 
   #menu .separat {
     background: #f3f5f7;
@@ -184,6 +182,15 @@ export default {
     font-size: 12px;
     font-weight: bold;
     color: #93999f;
+    border-left: 2px solid #ccc;
+  }
+
+  #menu .block div:last-child {
+    border-bottom: 0;
+  }
+
+  #menu .separat + div:last-child {
+    border-bottom: 0;
   }
 
   .clearfix:after {

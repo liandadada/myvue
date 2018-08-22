@@ -3,7 +3,7 @@
     <div class="store-list">
       <div class="total-dec">
         <div class="top">
-          <p class="store-name">粥品香坊（回龙观）<i class="iconfont icon-heart-fill" :class="{heart: red_heart}" @click="collect"></i></p>
+          <p class="store-name">粥品香坊（回龙观）<i class="iconfont icon-heart-fill" :class="{heart: red_heart}" @touchstart="collect"></i></p>
           <p class="store-desc"><template v-for="i in 5"><i class="iconfont icon-shoucang" v-bind:key="i"></i>&nbsp;</template>
           <span class="score">(24)</span><span>月售90单</span><span class="collection">{{msg}}</span></p>
         </div>
@@ -142,6 +142,7 @@ export default {
 
 #store .store-desc i {
   color: #d4d6d9;
+  font-size: 15px;
 }
 
 #store .store-desc .score {
@@ -217,7 +218,7 @@ export default {
   line-height: 24px;
   padding: 16px 12px;
   border-bottom: 1px solid #ccc;
-} 
+}
 
 #store .notice ul li:last-child {
   border-bottom: none;

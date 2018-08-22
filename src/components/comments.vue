@@ -24,7 +24,7 @@
           <button @click="numChiose('0')">不满意<span class="count">6</span></button>
         </div>
         <div class="flitrate">
-          <i class="iconfont icon-check-circle-fill" :class="{active: isActive}" @click="filt"></i> 只看有内容的评价
+          <i class="iconfont icon-check-circle-fill" :class="{active: isActive}" @touchstart="filt"></i> 只看有内容的评价
         </div>
         <div class="evaluation">
           <ul>
@@ -62,14 +62,14 @@ export default {
       this.isActive = !this.isActive
     },
     numChiose: function(num) {
-      
+
       this.evaluated = []
-      if (num == '2') {
+      if (num === '2') {
         this.evaluated = this.evaluation;
         return
       }
       this.evaluation.forEach((item, index) => {
-        if(item.satisfied == num) {
+        if(item.satisfied === num) {
           this.evaluated.push(item);
         }
       });
@@ -153,6 +153,7 @@ export default {
 
   #comment .icon-shoucang {
     color: #ff9900;
+    font-size: 14px;
   }
 
   #comment .icon-shoucang:nth-child(5) {
